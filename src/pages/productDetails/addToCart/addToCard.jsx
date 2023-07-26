@@ -96,7 +96,10 @@ const AddToCard = (props) => {
           </div>
           <>
             <GrLocation />
-            <span style={{ fontSize: "12px", color: "#007185" }}>
+            <span
+              style={{ fontSize: "12px", color: "#007185" }}
+              className="ms-1"
+            >
               Derlivar to Egypt
             </span>
           </>

@@ -150,7 +150,7 @@ const ProductDetails = () => {
                   </tr>
                   <tr>
                     <th>category</th>
-                    <td> {product.category}</td>
+                    <td className="ps-3"> {product.category}</td>
                   </tr>
                 </tbody>
               </table>
