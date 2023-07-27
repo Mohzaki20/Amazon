@@ -245,7 +245,7 @@ const Content = () => {
             <h2 className="Categories-Title">{t('Menswear')}  </h2>
               <img
                 className="Categories-Image"
-                src="https://m.media-amazon.com/images/I/41+apisiepS._AC_UL600_FMwebp_QL65_.jpg"
+                src="https://m.media-amazon.com/images/I/41Ba4enXNgL._AC_SR400,600_.jpg"
               />
               <Link className="Categories-Link" to="/mens-shirts">
               {t('Seemore')}
@@ -287,7 +287,7 @@ const Content = () => {
                 className="card-img-top mx-auto d-block Category_Items_Image"
               />
               <div className="card-body">
-              <p className="Item_Offer">{t('EGP200andunder')}</p>
+              <p className="Item_Offer">{t('Upto30%off')}</p>
               <p className="Item_Offer_Dis">{t('Saveonvideogames')}</p>
               </div>
             </div>
@@ -382,7 +382,7 @@ const Content = () => {
                 className="card-img-top mx-auto d-block Category_Items_Image"
               />
               <div className="card-body">
-                 <p className="Item_Offer">{t("EGP200andunder")}</p>
+                 <p className="Item_Offer">{t("Upto30%off")}</p>
                 <p className="Item_Offer_Dis">{t("Saveonvideogames")}</p>
               </div>
             </div>
@@ -538,7 +538,7 @@ const Content = () => {
                 className="card-img-top mx-auto d-block Category_Items_Image"
               />
               <div className="card-body">
-                 <p className="Item_Offer">{t("EGP200andunder")}</p>
+                 <p className="Item_Offer">{t("Upto30%off")}</p>
                 <p className="Item_Offer_Dis">{t("Saveonvideogames")}</p>
               </div>
             </div>
@@ -620,7 +620,7 @@ const Content = () => {
                 className="card-img-top mx-auto d-block Category_Items_Image"
               />
               <div className="card-body">
-                 <p className="Item_Offer">{t("EGP200andunder")}</p>
+                 <p className="Item_Offer">{t("Upto30%off")}</p>
                  <p className="Item_Offer_Dis">{t('SaveonWomenswear')}</p>
               </div>
             </div>

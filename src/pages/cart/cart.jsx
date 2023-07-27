@@ -49,7 +49,7 @@ const Cart = () => {
     }
   }, [handleDelete]);
   return (
-    <div>
+    <div className="container-fluid">
       <div className="row shop-cart p-3 ">
         <div className="col-12 col-lg-9  ">
           {product.length >= 1 ? (

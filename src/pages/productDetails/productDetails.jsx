@@ -46,10 +46,11 @@ const ProductDetails = () => {
 
   // console.log(Object.keys(product).length);
   return (
-    <div>
+    <div className="container-fluid">
       {Object.keys(product).length < 1 ? (
         <Loading />
       ) : (
+        
         <div className="row my-5 details">
           <div className="col-12 col-sm-1  d-none d-lg-block">
             <div className="img-continer mx-lg-2">
