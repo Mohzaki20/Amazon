@@ -7,13 +7,14 @@ import Loading from "../../components/loading/loading";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase/instanceFire";
 import Rate from "../../components/rate/rate";
+import usePrice from "../../customHook/usePrice";
 const ProductDetails = () => {
   let [product, setproduct] = useState({});
   let [numberImg, setNumberImg] = useState(0);
   let { id } = useParams();
   let [price, setprice] = useState("");
   const { state } = useLocation();
-
+  let newPrice = usePrice(price);
   useEffect(() => {
     if (state !== null) {
       let data = doc(db, state, id);
@@ -22,9 +23,8 @@ const ProductDetails = () => {
         .then((res) => {
           console.log(res.data());
           setproduct(res.data());
-          let price = res.data().price.toString().split("");
-          price.splice(2, 0, ",");
-          setprice(price.join(""));
+          let price = res.data().price;
+          setprice(price);
         })
         .catch((err) => {
           console.log(err);
@@ -34,23 +34,19 @@ const ProductDetails = () => {
         .then((res) => {
           console.log(res.data);
           setproduct(res.data);
-          let price = res.data.price.toString().split("");
-          price.splice(2, 0, ",");
-          setprice(price.join(""));
+          let price = res.data.price;
+          setprice(price);
         })
         .catch((err) => {
           console.log(err);
         });
     }
   }, []);
-
-  // console.log(Object.keys(product).length);
   return (
     <div className="container-fluid">
       {Object.keys(product).length < 1 ? (
         <Loading />
       ) : (
-        
         <div className="row my-5 details">
           <div className="col-12 col-sm-1  d-none d-lg-block">
             <div className="img-continer mx-lg-2">
@@ -100,7 +96,7 @@ const ProductDetails = () => {
             <div className="border-bottom py-3 ">
               <div className="d-flex">
                 <span>EGP</span>
-                <h3 className=" fw-bold">{price}0</h3>
+                <h3 className=" fw-bold">{newPrice}</h3>
                 <span>00</span>
               </div>
               <>

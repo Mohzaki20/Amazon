@@ -19,7 +19,7 @@ const WomenDresses = () => {
   const [rating, setRating] = useState(0);
   const loading = useSelector((state) => state.loading.loading);
 
-  let collection = "Jewllery";
+  let collection = "Women's clothing";
   let { productsOrginal, products, maxRange, minRange } = UseGetByFireBase(
     collection,
     filterByBrand,

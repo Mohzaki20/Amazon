@@ -1,4 +1,3 @@
-
 .shop-cart {
   background-color: #eaeded;
 }
@@ -6,6 +5,7 @@
 .shop-cart .empty {
   background-color: white;
 }
+
 .shop-cart .empty *:not(h5, span) {
   border-bottom: 1px solid #eaeded;
 }
