@@ -25,7 +25,7 @@ function App() {
 
   return (
     <>
-    <div dir={`${lang=='en'?'ltr':'rtl'}`} className="p-0">
+    <div dir={`${lang=='en'?'ltr':'rtl'}`} >
     <LangProvider value={{lang,setlang}}>
       <Container fluid   className="p-0">
         <Routes>

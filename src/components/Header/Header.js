@@ -169,7 +169,8 @@ const resttoEN = () => {
           xlangarrow:72.7,
           xsignarrow:82.3,
           xsearch:22.6,
-          cartdirection:"row"
+          cartdirection:"row",
+          langdir:'rtl'
 
       });
 };
@@ -194,21 +195,21 @@ const resttoEN = () => {
               <li  style={{width:"40%"}} className="locationdiv" 
                >
               <Link to="/">
-                <div className=" d-flex  flex-norap w-100" >
+                <div className=" d-flex  flex-norap" style={{width:'85%'}} >
                   <div
-                    className="col-4 p-0 d-flex align-items-end"
+                    className="p-0 d-flex align-items-end"
                  
                   >
                     <img
                       src={location}
-                      width="100%"
+                      width="200%"
                       height="65%"
                       alt="logo"
                       style={{ paddingBottom: "7%" }}
                     />
                   </div>
 
-                  <div className="col-8 px-0">
+                  <div className="col-10 px-0">
                     <div className="headertextloc m-0 p-0">{t('Deliver')} </div>
 
                     <div className="headertextloc2 m-0 p-0  ">{t('Egypt')}</div>
@@ -220,17 +221,7 @@ const resttoEN = () => {
         
           </div>
 
-          <div id="mobilediv">
-            <a className="mobile-signinIcon" href="/">
-              <span>{t('sign')}</span>
-            </a>
-
-            <i className="usericon  fa-solid fa-user"></i>
-
-            <a href="/">
-              <img src={cartImg2} alt="" />
-            </a>
-          </div>
+         
 
           <div className="navsearch">
             <button className="book">{t('All')} </button>
@@ -256,48 +247,26 @@ const resttoEN = () => {
             </button>
           </div>
 
-          <div id="logo3">
-            <button
-              type="button"
-              className="btn btn-secondary w-100 h-100"
-              style={{ backgroundColor: "gray", width: "98%", height: "100%" }}
-            >
-              <div className="d-flex h-100 w-100" >
-                <div className="col-2" >
-                  {" "}
-                  <img
-                    src={location2}
-                    width="30%"
-                    alt="logo"
-                    style={{ verticalAlign: "inherit" }}
-                  />
-                </div>
-
-                <div> {t('Deliver')} {t('Egypt')} </div>
-              </div>
-            </button>
-          </div>
-
           <div id="right-nav">
             <ul>
-            <li className="position-relative me-1">
+            <li className="position-relative me-1"  style={{ width: "25%"  }}>
                 <Link to="/cart" className="d-flex" style={{flexDirection:`${sta.cartdirection}`}}>
                   <img src={cartImg} alt="" className="navCartImage" />
 
-                  <span style={{  fontSize: "1.1vw" }}>
+                  <span>
                     {t('cart')}
                   </span>
 
                   <div className="cartItemNum">{allProduct.length}</div>
                 </Link>
               </li>
-              <li>
+              <li  style={{ width: "19%"  }}>
                 <Link to='/'>
                   <div>{t('Returns')} {t('Orders')}</div>
                 </Link>
               </li>
               <li
-                style={{ width: "30%"  }}
+                style={{ width: "40%"  }}
                 onMouseEnter={() => {
                   setsignInIsShown(true);
                 }}
@@ -326,14 +295,44 @@ const resttoEN = () => {
                   </div>
                 </Link>
               </li>
-
-           
-
-             
-
-           
             </ul>
           </div>
+
+          <div id="logo3">
+            <button
+              type="button"
+              className="btn btn-secondary w-100 h-100"
+              style={{ backgroundColor: "gray", width: "98%", height: "100%" }}
+            >
+              <div className="d-flex h-100 w-100" >
+                <div className="col-1 p-0" >
+                  {" "}
+                  <img
+                    src={location2}
+                    width="55%"
+                    alt="logo"
+                    style={{ verticalAlign: "inherit" }}
+                  />
+                </div>
+
+                <div> {t('Deliver')} {t('Egypt')} </div>
+              </div>
+            </button>
+          </div>
+          <div id="mobilediv">
+            <a className="mobile-signinIcon" href="/">
+              <span>{t('sign')}</span>
+            </a>
+
+            <i className="usericon  fa-solid fa-user"></i>
+
+            <Link to="/cart" className="d-flex" style={{flexDirection:`${sta.cartdirection}`}}>
+                  <img src={cartImg} alt="" className="navCartImage" />
+
+                  <div className="cartItemNum">{allProduct.length}</div>
+                </Link>
+          </div>
+          
         </nav>
       </div>
 
@@ -345,7 +344,8 @@ const resttoEN = () => {
         />
         <span 
           id="spanlang"
-          style={{display: langisShown ? "block" : "none",
+          style={{
+            display: langisShown ? "block" : "none",
           position:"absolute", left: `${sta.xlangarrow}vw`,
           top: `${sta.ylangarrow}vw`}}
           onMouseEnter={() => setlangisShown(true)}
