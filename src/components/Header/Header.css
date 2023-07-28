@@ -4,7 +4,6 @@ body {
   font-family: "Amazon Ember", sans-serif;
 }
 
-
 .navheader {
   background-color: black;
   display: flex;
@@ -51,15 +50,14 @@ body {
   display: flex;
   position: absolute;
   text-align: center;
-  left: 35%; 
-   top: 1%;
+  left: 35%;
+  top: 1%;
   font-weight: bold;
   color: #f08804;
-  align-self:first  baseline;
+  align-self: first baseline;
 }
 
-
-#left-nav ul{
+#left-nav ul {
   width: 100%;
   height: 3.5vw;
   display: flex;
@@ -67,31 +65,28 @@ body {
   padding: 0;
 }
 
-#left-nav li{
+#left-nav li {
   height: 100%;
   margin-left: 2%;
   margin-right: 2%;
-align-items: center;
+  align-items: center;
   width: 45%;
   list-style-type: none;
   border: 1px solid black;
-
-  
 }
 #left-nav li a {
-      /* padding: 1% 7% 4% 7%; */
-      display: flex;
-      justify-content: center;
-      height: 99%;
-      text-decoration: none;
-      color: white;
-      text-align: center;
-      flex-wrap: wrap;
-      flex-direction: row-reverse;
-      align-items: center;
-      align-content: center;
+  /* padding: 1% 7% 4% 7%; */
+  display: flex;
+  justify-content: center;
+  height: 99%;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+  align-items: center;
+  align-content: center;
 }
-
 
 #left-nav li:hover {
   border: 1px solid white;
@@ -157,7 +152,6 @@ align-items: center;
 
   width: 23%;
   border: 1px solid black;
-
 }
 
 .langarrow {
@@ -228,9 +222,9 @@ button:hover {
 }
 
 .navsearch {
-  margin-left: 1%; 
+  margin-left: 1%;
 
-   margin-right: 1%;
+  margin-right: 1%;
 
   background-color: aliceblue;
 
@@ -421,9 +415,8 @@ button:hover {
 
   z-index: 100;
   transition-property: display;
-  transition-timing-function:ease   ;
-  transition-duration: 2s;  
-
+  transition-timing-function: ease;
+  transition-duration: 2s;
 }
 
 #listofsign a {
@@ -506,11 +499,9 @@ button:hover {
   padding-left: 10px;
   padding-right: 10px;
 
-
   border-radius: 2%;
 
   z-index: 100;
-
 }
 
 #divlangitem:hover {
@@ -528,8 +519,6 @@ button:hover {
 .langselect label {
   padding-left: 10%;
   padding-right: 10%;
-
-
 }
 
 .langselect:hover {
@@ -638,14 +627,14 @@ button:hover {
 
     width: 100%;
   }
-  .amazonlogo{
-  width: 100%;
+  .amazonlogo {
+    width: 100%;
   }
   .navCartImage {
     position: relative;
-  
+
     width: 60%;
-  
+
     /* padding: 4% 0 0 0; */
   }
 
@@ -690,7 +679,7 @@ button:hover {
   }
 
   #right-nav li a {
-   /* padding: 1% 7% 4% 7%; */
+    /* padding: 1% 7% 4% 7%; */
     display: flex;
     justify-content: center;
     height: 80%;
@@ -893,7 +882,6 @@ button:hover {
     padding-left: 0%;
     padding-right: 0%;
 
-
     text-decoration: none;
 
     color: rgb(71, 71, 71);
@@ -912,7 +900,6 @@ button:hover {
 
     padding-left: 3%;
     padding-right: 3%;
-
   }
 
   .registerlink {
@@ -922,7 +909,6 @@ button:hover {
   .listsearchtext {
     padding-left: 7%;
     padding-right: 7%;
-
 
     font-size: 11px;
   }
@@ -1002,8 +988,6 @@ button:hover {
   .langselect label {
     padding-left: 15%;
     padding-right: 15%;
-
-    
   }
 
   .langselect:hover {
@@ -1103,7 +1087,7 @@ button:hover {
 
     width: 100%;
   }
-  #left-nav ul{
+  #left-nav ul {
     height: 8.5vw;
   }
   #right-nav {
@@ -1230,5 +1214,16 @@ button:hover {
 
   .locationdiv {
     display: none;
+  }
+  .cartItemNum {
+    position: absolute;
+
+    left: 91.3%;
+
+    top: 0.5%;
+
+    font-weight: bold;
+
+    color: #f08804;
   }
 }

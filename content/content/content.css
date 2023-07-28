@@ -13,8 +13,8 @@
   cursor: pointer;
 }
 .Categories {
-  position: relative !important;
-  margin: 0 !important;
+   position: relative !important;
+   margin: 0 !important;
   margin-top: -180px !important;
   width: 100%;
   top: 45%;
@@ -44,8 +44,8 @@
   color: rgb(65, 117, 145);
   text-decoration: none;
   display: block;
-  margin-left: 1%;
-  margin-top: 2%;
+  margin-left: 3%;
+  margin-top: 3%;
 }
 .Categories-Link:hover {
   color: #c45500;
@@ -84,7 +84,7 @@
 }
 .Category_Items_Image {
   height: 200px;
-  width: 80% !important;
+  width:  80% !important;
 }
 .Mid_Img {
   margin-left: 13%;
@@ -107,8 +107,7 @@
   left: 5px !important;
   z-index: 100 !important;
 }
-.slick-prev:before,
-.slick-next:before {
+.slick-prev:before,.slick-next:before {
   opacity: 1 !important;
   color: black !important;
 }
@@ -116,25 +115,28 @@
   right: 5px !important;
   z-index: 100 !important;
 }
-.slider-container {
+.slider-container{
   background-color: white !important;
-  margin-bottom: 30px !important;
+  margin-bottom:30px !important;
 }
-.imagebackground {
+.imagebackground{
   height: 70vh;
 }
-.carousel-control-prev {
+.carousel-control-prev{
   background-color: transparent;
 }
-.carousel-control-prev:hover {
+.carousel-control-prev:hover{
   background-color: transparent;
+
 }
 
-.carousel-control-next {
+.carousel-control-next{
   background-color: transparent;
+
 }
-.carousel-control-next:hover {
+.carousel-control-next:hover{
   background-color: transparent;
+
 }
 
 .carousel-item {
@@ -144,5 +146,5 @@
   /* width: 100%; */
   margin-right: -100%;
   /* backface-visibility: hidden; */
-  transition: transform 0.2s ease-in-out;
+  transition: transform .2s ease-in-out;
 }

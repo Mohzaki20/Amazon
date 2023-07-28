@@ -214,9 +214,15 @@ export default function Header() {
 
             <i className="usericon  fa-solid fa-user"></i>
 
-            <a href="/">
-              <img src={cartImg2} alt="" />
-            </a>
+            <Link
+              to="/cart"
+              className="d-flex"
+              style={{ flexDirection: `${sta.cartdirection}` }}
+            >
+              <img src={cartImg} alt="" className="navCartImage" />
+
+              <div className="cartItemNum">{allProduct.length}</div>
+            </Link>
           </div>
 
           <div className="navsearch">
