@@ -1,7 +1,7 @@
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../FirebaseConfig/FirebaseConfig";
 import imgNav from "../../assets/images/XCM_Manual_1550677_5471696_400x39_2X._CB592483028_.jpg";
 import flagImg from "../../assets/images/egypt.png";
@@ -9,9 +9,10 @@ import { langContext } from "../../context/lang";
 import "./style.css";
 
 export default function Navbar() {
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState({});
 
   var { lang } = useContext(langContext);
+  const navigate = useNavigate();
 
   const { t } = useTranslation();
   const [sta, setsta] = useState({
@@ -38,19 +39,18 @@ export default function Navbar() {
   };
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
   const [menu, setMenu] = useState(false);
-
   async function handelMenu() {
     handleall();
     await delay(500);
     setMenu(!menu);
   }
-  function signOutUser() {
-    signOut(auth);
-    console.log("sign out done");
+  async function signOutUser() {
+    await signOut(auth);
+    navigate("/sign");
   }
-  onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-  });
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => setUser(currentUser));
+  }, [menu]);
   return (
     <>
       <div>
@@ -89,90 +89,6 @@ export default function Navbar() {
           </ul>
           <img className="img" src={imgNav} alt="" />
         </div>
-        <div className="layout" />
-        <div className="menu">
-          <span className="x-mark">
-            <i
-              className="fa-solid fa-xmark fa-2xl"
-              style={{ color: "white" }}
-            />
-          </span>
-          <div className="header">
-            <div className="info">
-              <h3 className="heading">
-                <span>
-                  <i className="fa-solid fa-circle-user" />{" "}
-                </span>
-                {t("Hello")} 
-                <Link to="/sign" id="signUser">
-                  {t("sign")}
-                </Link>
-              </h3>
-            </div>
-          </div>
-          <div className="trending">
-            <h4>{t("Trending")}</h4>
-            <div>{t("Bestselling")}</div>
-            <div>{t("NewReleases")}</div>
-            <div>
-              {t("Movers")} &amp;{t("Sharks")}{" "}
-            </div>
-          </div>
-          <div className="digital">
-            <h4>{t("Digital")}</h4>
-            <div className="d-flex align-items-center justify-content-between">
-              <span>{t("AmazonKindle")} </span>
-              <i
-                className="fa-solid fa-angle-right"
-                style={{ color: "#777" }}
-              />
-            </div>
-          </div>
-          <div className="shop">
-            <h4>{t("ShopByCategory")}</h4>
-            <Link href="./Cart & Pages/electronics.html">
-              <span>{t("Electronics")}</span>
-              <i
-                className="fa-solid fa-angle-right"
-                style={{ color: "#777" }}
-              />
-            </Link>
-            <Link href="./Cart & Pages/jewelery.html">
-              <span>{t("Jewelry")}</span>
-              <i
-                className="fa-solid fa-angle-right"
-                style={{ color: "#777" }}
-              />
-            </Link>
-            <Link href="./Cart & Pages/man.html">
-              <span>{t("Menclothing")}</span>
-              <i
-                className="fa-solid fa-angle-right"
-                style={{ color: "#777" }}
-              />
-            </Link>
-            <Link href="./Cart & Pages/women.html">
-              <span>{t("Womenclothing")}</span>
-              <i
-                className="fa-solid fa-angle-right"
-                style={{ color: "#777" }}
-              />
-            </Link>
-          </div>
-          <div className="help">
-            <h4>
-              {t("Help")} &amp; {t("Settings")}
-            </h4>
-            <Link href="./Sign/Sign.html">{t("YourAccount")}</Link>
-            <div>
-              <i className="fa-solid fa-earth-americas" /> {t("English")}
-            </div>
-            <div className="d-flex align-items-center ">
-              <img src={flagImg} style={{ width: "20px" }} alt="" />
-              <span style={{ marginLeft: "5px" }}>Egypt</span>
-            </div>
-          </div>
-        </div>
       </div>
       {/* start overlay */}
       <div>
@@ -207,10 +123,16 @@ export default function Navbar() {
                 <span>
                   <i className="fa-solid fa-circle-user" />{" "}
                 </span>
-                {t("Hello")}{" "}
-                <Link href="./Sign/Sign.html" id="signUser">
-                  {t("sign")}
-                </Link>
+                {user?.email ? (
+                  `Hello , ${localStorage.getItem("name")}`
+                ) : (
+                  <>
+                    {t("Hello")}{" "}
+                    <Link to="/sign" id="signUser">
+                      {t("sign")}
+                    </Link>
+                  </>
+                )}
               </h3>
             </div>
           </div>
@@ -277,12 +199,21 @@ export default function Navbar() {
               <img src={flagImg} style={{ width: "20px" }} alt="" />
               <span style={{ marginLeft: "5px" }}>{t("Egypt")}</span>
             </div>
-            <div
-              className="d-flex align-items-center justify-content-between p-3"
-              onClick={signOutUser}
-            >
-              <span style={{ marginLeft: "5px" }}>{t("Sign Out")}</span>
-            </div>
+            {user?.email ? (
+              <div
+                className="d-flex align-items-center justify-content-between p-3"
+                onClick={signOutUser}
+              >
+                <span style={{ marginLeft: "5px" }}>{t("Sign Out")}</span>
+              </div>
+            ) : (
+              <Link
+                className="d-flex align-items-center justify-content-between p-3"
+                to="/sign"
+              >
+                <span style={{ marginLeft: "5px" }}>{t("Sign In")}</span>
+              </Link>
+            )}
           </div>
         </div>
       </div>

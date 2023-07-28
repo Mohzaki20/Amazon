@@ -42,7 +42,7 @@ export default function Register() {
             <form id="form" onSubmit={(e) => handleRegister(e)}>
               <h1>Create account</h1>
               <label htmlFor="name">Your Name</label>
-              <input type="text" id="name" placeholder="First and Last name" />
+              <input type="text" id="name" placeholder="First and Last name" onChange={(e) => localStorage.setItem("name",e.target.value)}/>
               <label htmlFor="mobile">Email</label>
               <input
                 type="text"

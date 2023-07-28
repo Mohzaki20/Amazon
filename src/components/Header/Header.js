@@ -22,6 +22,8 @@ import searchImg from "../../assets/images header/search.png";
 import { useTranslation } from 'react-i18next';
 import { langContext } from "../../context/lang";
 import { dir } from "i18next";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../FirebaseConfig/FirebaseConfig";
 
 export default function Header() {
   const { t, i18n } = useTranslation();
@@ -31,7 +33,6 @@ export default function Header() {
 
   var { lang, setlang } = useContext(langContext)
 
-  // console.log(allProduct.length);
 
   const [signInisShown, setsignInIsShown] = useState(false);
 
@@ -42,7 +43,11 @@ export default function Header() {
   const [query, setquery] = useState("");
 
   const [resultSearch, setResultSearch] = useState([]);
+  const [user, setUser] = useState({});
 
+  useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => setUser(currentUser));
+  });
 
   async function handelsearchshow() {
     await delay(500);
@@ -56,7 +61,6 @@ export default function Header() {
   }
 
   function handellangshow() {
-
     setlangisShown(!langisShown);
   }
 
@@ -71,7 +75,6 @@ export default function Header() {
         .then((res) => {
           setResultSearch(res.data.products);
 
-          // console.log(res.data.products);
         })
 
         .catch((err) => console.log(err));
@@ -95,8 +98,6 @@ export default function Header() {
   useEffect(() => {
 
   }, [resultSearch]);
-
-
 
   const navigateToProdcut = (cat) => {
     var arr = [
@@ -303,7 +304,9 @@ export default function Header() {
                 onMouseLeave={handelsigninshow}
               >
                 <Link to="./sign" id="signinarrow">
-                  <div>{t('Sign')}</div>
+                  <div>{user?.email ? `Hello ${localStorage.getItem("name")}` : <>{t('Sign')}</>
+                  }
+                  </div>
 
                   <span id="signarrow">{t('Account')}</span>
                 </Link>
