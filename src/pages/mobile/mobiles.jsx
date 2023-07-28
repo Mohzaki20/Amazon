@@ -9,28 +9,24 @@ import FilterByBrand from "../../components/filter/filterByBrand/FilterByBrand";
 import Accordion from "react-bootstrap/Accordion";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import FilterByRating from "../../components/filter/filterByRating/FilterByRating";
-import FilterByColor from "../../components/filter/filterByColor/FilterByColor";
-import UseGetByFireBase from "../../customHook/useGetByFireBase";
+import UseGetData from "../../customHook/useGetData";
 const Mobiles = () => {
   const [filterByBrand, setFilterByBrand] = useState([]);
-  const [filterByColor, setFilterByColor] = useState([]);
   const [maxPrice, setMaxPrice] = useState(0);
   const [minPrice, setMinPrice] = useState(0);
   const [rating, setRating] = useState(0);
   const loading = useSelector((state) => state.loading.loading);
 
-  let collection = "Jewllery";
-  let { productsOrginal, products, maxRange, minRange } = UseGetByFireBase(
-    collection,
+  let { productsOrginal, products, maxRange, minRange } = UseGetData(
+    "/category/smartphones",
     filterByBrand,
-    filterByColor,
     maxPrice,
     setMaxPrice,
     minPrice,
     setMinPrice,
     rating
   );
-  // console.log(filterByColor);
+
   return (
     <Container fluid>
       <div className="row my-5 laptop">
@@ -58,14 +54,6 @@ const Mobiles = () => {
             <div className="mt-4">
               <p className="fw-bold mb-0">Avg. Customer Review</p>
               <FilterByRating setRating={setRating} />
-            </div>
-            <div className="mt-4">
-              <p className="fw-bold mb-0">Color</p>
-              <FilterByColor
-                products={productsOrginal}
-                setFilterByColor={setFilterByColor}
-                filterByColor={filterByColor}
-              />
             </div>
           </div>
 
@@ -127,29 +115,13 @@ const Mobiles = () => {
                       </Accordion.Body>
                     </Accordion.Item>
                   </Accordion>
-                  <Accordion>
-                    <Accordion.Item className="sub-filter" eventKey="4">
-                      <Accordion.Header>Color</Accordion.Header>
-                      <Accordion.Body>
-                        <FilterByColor
-                          products={productsOrginal}
-                          setFilterByColor={setFilterByColor}
-                          filterByColor={filterByColor}
-                        />
-                      </Accordion.Body>
-                    </Accordion.Item>
-                  </Accordion>
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>
           </div>
         </div>
         <div className="col-12 col-md-10">
-          {loading ? (
-            <Loading />
-          ) : (
-            <Product products={products} collection={collection} />
-          )}
+          {loading ? <Loading /> : <Product products={products} />}
         </div>
       </div>
     </Container>

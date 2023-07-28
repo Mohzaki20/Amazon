@@ -10,23 +10,29 @@ import UseGetData from "../../customHook/useGetData";
 import FilterByBrand from "../../components/filter/filterByBrand/FilterByBrand";
 import FilterByPrice from "../../components/filter/filterByPrice/FilterByPrice";
 import FilterByRating from "../../components/filter/filterByRating/FilterByRating";
+import UseGetByFireBase from "../../customHook/useGetByFireBase";
+import FilterByColor from "../../components/filter/filterByColor/FilterByColor";
 
 const Laptops = () => {
   const [filterByBrand, setFilterByBrand] = useState([]);
+  const [filterByColor, setFilterByColor] = useState([]);
   const [maxPrice, setMaxPrice] = useState(0);
   const [minPrice, setMinPrice] = useState(0);
   const [rating, setRating] = useState(0);
   const loading = useSelector((state) => state.loading.loading);
 
-  let { productsOrginal, products, maxRange, minRange } = UseGetData(
-    "/category/laptops",
+  let collection = "Electronics";
+  let { productsOrginal, products, maxRange, minRange } = UseGetByFireBase(
+    collection,
     filterByBrand,
+    filterByColor,
     maxPrice,
     setMaxPrice,
     minPrice,
     setMinPrice,
     rating
   );
+  // console.log(filterByColor);
   return (
     <Container fluid>
       <div className="row my-5 laptop">
@@ -54,6 +60,14 @@ const Laptops = () => {
             <div className="mt-4">
               <p className="fw-bold mb-0">Avg. Customer Review</p>
               <FilterByRating setRating={setRating} />
+            </div>
+            <div className="mt-4">
+              <p className="fw-bold mb-0">Color</p>
+              <FilterByColor
+                products={productsOrginal}
+                setFilterByColor={setFilterByColor}
+                filterByColor={filterByColor}
+              />
             </div>
           </div>
 
@@ -115,17 +129,32 @@ const Laptops = () => {
                       </Accordion.Body>
                     </Accordion.Item>
                   </Accordion>
+                  <Accordion>
+                    <Accordion.Item className="sub-filter" eventKey="4">
+                      <Accordion.Header>Color</Accordion.Header>
+                      <Accordion.Body>
+                        <FilterByColor
+                          products={productsOrginal}
+                          setFilterByColor={setFilterByColor}
+                          filterByColor={filterByColor}
+                        />
+                      </Accordion.Body>
+                    </Accordion.Item>
+                  </Accordion>
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>
           </div>
         </div>
         <div className="col-12 col-md-10">
-          {loading ? <Loading /> : <Product products={products} />}
+          {loading ? (
+            <Loading />
+          ) : (
+            <Product products={products} collection={collection} />
+          )}
         </div>
       </div>
     </Container>
   );
 };
-
 export default Laptops;
