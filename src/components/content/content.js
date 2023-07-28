@@ -4,10 +4,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { React, useState, useEffect, Component } from "react";
 import "./content.css";
-// import Carousel from "react-bootstrap/Carousel";
-// import Button from "react-bootstrap/Button";
-// import Card from "react-bootstrap/Card";
-// import { Container, Row, Col, Image } from "react-bootstrap";
 import Slider from "react-slick";
 import img1 from "../../assets/b1.jpg";
 import img2 from "../../assets/b2.jpg";
@@ -91,7 +87,6 @@ const Content = () => {
         settings: {
           slidesToShow: 4,
           slidesToScroll: 4,
-          // initialSlide: 4,
         },
       },
       {
@@ -109,7 +104,6 @@ const Content = () => {
       <div className="container-fluid HomePage p-0">
         <div>
           <div
-            // style={{ height: "100vh" }}
             id="carouselExample"
             className="carousel slide background"
             data-ride="carousel"
@@ -118,14 +112,12 @@ const Content = () => {
           >
             <div className="carousel-inner">
               {Images.map((image, i) => (
-                // <div className="carousel-item active" interval={5000}>
                 <div
                   className={`carousel-item ${i === 0 ? "active" : ""}`}
                   key={i}
                 >
                   <img
                     src={image}
-                    // alt={i}
                     alt={`Slide ${i}`}
                     className="d-block w-100 imagebackground"
                   />
@@ -133,50 +125,6 @@ const Content = () => {
               ))}
             </div>
             
-            {/* 
-              <div className="carousel-item" interval={5000}>
-                <img
-                  src="https://images-eu.ssl-images-amazon.com/images/G/42/Sunrise/Events/2022/NTAWeclomePage/XCM_Manual_1437710_4757732_1500x250_2X.jpg"
-                  className="d-block w-100"
-                />
-              </div>
-              <div className="carousel-item" interval={5000}>
-                <img
-                  src="https://m.media-amazon.com/images/I/71qPipHhf6L._SX3000_.jpg"
-                  className="d-block w-100"
-                />
-              </div>
-              <div className="carousel-item" interval={5000}>
-                <img
-                  src="https://m.media-amazon.com/images/I/71mFYFC1ntL._SX3000_.jpg"
-                  className="d-block w-100"
-                />
-              </div>
-              <div className="carousel-item" interval={5000}>
-                <img
-                  src="https://m.media-amazon.com/images/I/61RH13onl1L._SX3000_.jpg"
-                  className="d-block w-100"
-                />
-              </div>
-              <div className="carousel-item" interval={5000}>
-                <img
-                  src="https://m.media-amazon.com/images/I/61YmPfq2eJL._SX3000_.jpg"
-                  className="d-block w-100"
-                />
-              </div>
-              <div className="carousel-item" interval={5000}>
-                <img
-                  src="https://m.media-amazon.com/images/I/71Gyeb6+A8L._SX3000_.jpg"
-                  className="d-block w-100"
-                />
-              </div>
-              <div className="carousel-item" interval={5000}>
-                <img
-                  src="https://m.media-amazon.com/images/I/61S7anSm3yL._SX3000_.jpg"
-                  className="d-block w-100"
-                />
-              </div> */}
-
             <button
               className="carousel-control-prev"
               type="button"
@@ -774,8 +722,6 @@ const Content = () => {
           </Slider>
         </div>
       </div>
-
-      <div></div>
     </>
   );
 };
