@@ -6,7 +6,6 @@ import axios from "axios";
 
 import { useEffect } from "react";
 
-
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import logo from "../../assets/images header/amazon-logo-editorial-free-vector.jpg";
@@ -19,7 +18,7 @@ import cartImg from "../../assets/images header/cart333.png";
 import cartImg2 from "../../assets/images header/cart.png";
 
 import searchImg from "../../assets/images header/search.png";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import { langContext } from "../../context/lang";
 import { dir } from "i18next";
 import { onAuthStateChanged } from "firebase/auth";
@@ -31,8 +30,7 @@ export default function Header() {
 
   let allProduct = useSelector((state) => state.cart.cart);
 
-  var { lang, setlang } = useContext(langContext)
-
+  var { lang, setlang } = useContext(langContext);
 
   const [signInisShown, setsignInIsShown] = useState(false);
 
@@ -53,9 +51,7 @@ export default function Header() {
     await delay(500);
     setSearchIsShown(!searchIsShown);
   }
-  const delay = ms => new Promise(
-    resolve => setTimeout(resolve, ms)
-  );
+  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
   function handelsigninshow() {
     setsignInIsShown(!signInisShown);
   }
@@ -74,7 +70,6 @@ export default function Header() {
 
         .then((res) => {
           setResultSearch(res.data.products);
-
         })
 
         .catch((err) => console.log(err));
@@ -95,9 +90,7 @@ export default function Header() {
     }
   };
 
-  useEffect(() => {
-
-  }, [resultSearch]);
+  useEffect(() => {}, [resultSearch]);
 
   const navigateToProdcut = (cat) => {
     var arr = [
@@ -122,15 +115,15 @@ export default function Header() {
     }
   };
   const changelangtoEN = () => {
-    resttoEN()
-    setlang('en')
-    i18n.changeLanguage('en')
-  }
+    resttoEN();
+    setlang("en");
+    i18n.changeLanguage("en");
+  };
   const changelangtoAR = () => {
-    movelangAR()
-    setlang('ar')
-    i18n.changeLanguage('ar')
-  }
+    movelangAR();
+    setlang("ar");
+    i18n.changeLanguage("ar");
+  };
 
   const [sta, setsta] = useState({
     xlang: 67,
@@ -144,61 +137,52 @@ export default function Header() {
     xsearch: 22.6,
     ysearch: 7,
     cartdirection: "row",
-    langdir: 'rtl'
-
+    langdir: "rtl",
   });
 
-
   const movelangAR = () => {
-    setsta(
-      {
-        xlang: 20,
-        xsign: 10,
-        xlangarrow: 28.4,
-        xsignarrow: 23.2,
-        xsearch: 31.15,
-        cartdirection: "row-reverse",
-        langdir: 'ltr'
-
-      });
+    setsta({
+      xlang: 20,
+      xsign: 10,
+      xlangarrow: 28.4,
+      xsignarrow: 23.2,
+      xsearch: 31.15,
+      cartdirection: "row-reverse",
+      langdir: "ltr",
+    });
   };
   const resttoEN = () => {
-    setsta(
-      {
-        xlang: 67,
-        xsign: 52,
-        xlangarrow: 72.7,
-        xsignarrow: 82.3,
-        xsearch: 22.6,
-        cartdirection: "row"
-
-      });
+    setsta({
+      xlang: 67,
+      xsign: 52,
+      xlangarrow: 72.7,
+      xsignarrow: 82.3,
+      xsearch: 22.6,
+      cartdirection: "row",
+    });
   };
 
   return (
     <>
-      <div
-        className="container-fliud"
-      >
+      <div className="container-fliud">
         <nav className="navheader">
           <div id="left-nav">
             <ul>
               <li>
                 <Link to="/" className="p-0">
-                  <div >
-                    <img src={logo} alt="logo"
+                  <div>
+                    <img
+                      src={logo}
+                      alt="logo"
                       className="amazonlogo col-12 p-0"
                     />
                   </div>
                 </Link>
               </li>
-              <li style={{ width: "40%" }} className="locationdiv"
-              >
+              <li style={{ width: "40%" }} className="locationdiv">
                 <Link to="/">
-                  <div className=" d-flex  flex-nowrap w-100" >
-                    <div
-                      className="col-4 p-0 d-flex align-items-end"
-                    >
+                  <div className=" d-flex  flex-nowrap w-100">
+                    <div className="col-4 p-0 d-flex align-items-end">
                       <img
                         src={location}
                         width="100%"
@@ -209,31 +193,40 @@ export default function Header() {
                     </div>
 
                     <div className="col-8 px-0">
-                      <div className="headertextloc m-0 p-0">{t('Deliver')} </div>
+                      <div className="headertextloc m-0 p-0">
+                        {t("Deliver")}{" "}
+                      </div>
 
-                      <div className="headertextloc2 m-0 p-0  ">{t('Egypt')}</div>
+                      <div className="headertextloc2 m-0 p-0  ">
+                        {t("Egypt")}
+                      </div>
                     </div>
                   </div>
                 </Link>
               </li>
             </ul>
-
           </div>
 
           <div id="mobilediv">
             <a className="mobile-signinIcon" href="/">
-              <span>{t('sign')}</span>
+              <span>{t("sign")}</span>
             </a>
 
             <i className="usericon  fa-solid fa-user"></i>
 
-            <a href="/">
-              <img src={cartImg2} alt="" />
-            </a>
+            <Link
+              to="/cart"
+              className="d-flex"
+              style={{ flexDirection: `${sta.cartdirection}` }}
+            >
+              <img src={cartImg} alt="" className="navCartImage" />
+
+              <div className="cartItemNum">{allProduct.length}</div>
+            </Link>
           </div>
 
           <div className="navsearch">
-            <button className="book">{t('All')} </button>
+            <button className="book">{t("All")} </button>
 
             <input
               dir={!sta.langdir}
@@ -244,11 +237,11 @@ export default function Header() {
               value={query}
               name="search"
               autoComplete="off"
-              placeholder={t('Search')}
+              placeholder={t("Search")}
               data-search
               onFocus={handelsearchshow}
 
-            // onBlur={handelsearchshow}
+              // onBlur={handelsearchshow}
             />
 
             <button className="search" type="submit" onClick={search}>
@@ -262,8 +255,8 @@ export default function Header() {
               className="btn btn-secondary w-100 h-100"
               style={{ backgroundColor: "gray", width: "98%", height: "100%" }}
             >
-              <div className="d-flex h-100 w-100" >
-                <div className="col-2" >
+              <div className="d-flex h-100 w-100">
+                <div className="col-2">
                   {" "}
                   <img
                     src={location2}
@@ -273,7 +266,10 @@ export default function Header() {
                   />
                 </div>
 
-                <div> {t('Deliver')} {t('Egypt')} </div>
+                <div>
+                  {" "}
+                  {t("Deliver")} {t("Egypt")}{" "}
+                </div>
               </div>
             </button>
           </div>
@@ -281,19 +277,23 @@ export default function Header() {
           <div id="right-nav">
             <ul>
               <li className="position-relative me-1">
-                <Link to="/cart" className="d-flex" style={{ flexDirection: `${sta.cartdirection}` }}>
+                <Link
+                  to="/cart"
+                  className="d-flex"
+                  style={{ flexDirection: `${sta.cartdirection}` }}
+                >
                   <img src={cartImg} alt="" className="navCartImage" />
 
-                  <span style={{ fontSize: "1.1vw" }}>
-                    {t('cart')}
-                  </span>
+                  <span style={{ fontSize: "1.1vw" }}>{t("cart")}</span>
 
                   <div className="cartItemNum">{allProduct.length}</div>
                 </Link>
               </li>
               <li>
-                <Link to='/'>
-                  <div>{t('Returns')} {t('Orders')}</div>
+                <Link to="/">
+                  <div>
+                    {t("Returns")} {t("Orders")}
+                  </div>
                 </Link>
               </li>
               <li
@@ -304,11 +304,15 @@ export default function Header() {
                 onMouseLeave={handelsigninshow}
               >
                 <Link to="./sign" id="signinarrow">
-                  <div>{user?.email ? `Hello ${localStorage.getItem("name")}` : <>{t('Sign')}</>
-                  }
+                  <div>
+                    {user?.email ? (
+                      `Hello ${localStorage.getItem("name")}`
+                    ) : (
+                      <>{t("sign")}</>
+                    )}
                   </div>
 
-                  <span id="signarrow">{t('Account')}</span>
+                  <span id="signarrow">{t("Account")}</span>
                 </Link>
               </li>
               <li
@@ -318,28 +322,33 @@ export default function Header() {
                 }}
                 onMouseLeave={handellangshow}
               >
-                <Link to='/' className="langarrow" style={{ justifyContent: 'space-evenly', paddingTop: '13%', paddingRight: "17%", alignItems: 'center', flexDirection: `${sta.cartdirection}`, alignContent: "stretch" }} >
+                <Link
+                  to="/"
+                  className="langarrow"
+                  style={{
+                    justifyContent: "space-evenly",
+                    paddingTop: "13%",
+                    paddingRight: "17%",
+                    alignItems: "center",
+                    flexDirection: `${sta.cartdirection}`,
+                    alignContent: "stretch",
+                  }}
+                >
                   <img src={egypt} alt="" />
 
                   <div>
                     <span id="spanarrow" className="p-0">
-                      {t('EN')}
+                      {t("EN")}
                     </span>
                   </div>
                 </Link>
               </li>
-
-
-
-
-
-
             </ul>
           </div>
         </nav>
       </div>
 
-      <div >
+      <div>
         {" "}
         <div
           className="overlay"
@@ -349,8 +358,9 @@ export default function Header() {
           id="spanlang"
           style={{
             display: langisShown ? "block" : "none",
-            position: "absolute", left: `${sta.xlangarrow}vw`,
-            top: `${sta.ylangarrow}vw`
+            position: "absolute",
+            left: `${sta.xlangarrow}vw`,
+            top: `${sta.ylangarrow}vw`,
           }}
           onMouseEnter={() => setlangisShown(true)}
           onMouseLeave={handellangshow}
@@ -358,17 +368,18 @@ export default function Header() {
         <div
           style={{
             display: langisShown ? "block" : "none",
-            position: "absolute", left: `${sta.xlang}vw`,
-            top: `${sta.ylang}vw`
+            position: "absolute",
+            left: `${sta.xlang}vw`,
+            top: `${sta.ylang}vw`,
           }}
           id="divlangitem"
           onMouseEnter={() => setlangisShown(true)}
           onMouseLeave={handellangshow}
         >
           <div className="langselect">
-            {t('change')}{" "}
+            {t("change")}{" "}
             <a href="/" style={{ fontSize: "0.8vw" }}>
-              {t('learn')}
+              {t("learn")}
             </a>{" "}
           </div>
 
@@ -378,11 +389,10 @@ export default function Header() {
               type="radio"
               id="flexRadioDefault1"
               name="lang"
-
               value="en"
-              onChange={() => { changelangtoEN() }}
-
-
+              onChange={() => {
+                changelangtoEN();
+              }}
               defaultChecked
             />
 
@@ -398,7 +408,9 @@ export default function Header() {
               id="flexRadioDefault1"
               name="lang"
               value="ar"
-              onChange={() => { changelangtoAR() }}
+              onChange={() => {
+                changelangtoAR();
+              }}
             />
             <label>العربية - AR</label>
           </div>
@@ -406,7 +418,7 @@ export default function Header() {
           <hr />
 
           <div>
-            {t('Changecurrency')} <a href="/" >{t('Learn')}</a>
+            {t("Changecurrency")} <a href="/">{t("Learn")}</a>
           </div>
 
           {/* <div>$ - USD - US Dollar</div> */}
@@ -422,8 +434,9 @@ export default function Header() {
           id="div-sign-arrow"
           style={{
             display: signInisShown ? "block" : "none",
-            position: "absolute", left: `${sta.xsignarrow}vw`,
-            top: `${sta.ysignarrow}vw`
+            position: "absolute",
+            left: `${sta.xsignarrow}vw`,
+            top: `${sta.ysignarrow}vw`,
           }}
           onMouseEnter={() => setsignInIsShown(true)}
           onMouseLeave={handelsigninshow}
@@ -431,11 +444,12 @@ export default function Header() {
         <div
           style={{
             display: signInisShown ? "block" : "none",
-            transitionProperty: 'height',
-            transition: '1s',       // style={{ display: "block" ,
+            transitionProperty: "height",
+            transition: "1s", // style={{ display: "block" ,
 
-            position: "absolute", left: `${sta.xsign}vw`,
-            top: `${sta.ysign}vw`
+            position: "absolute",
+            left: `${sta.xsign}vw`,
+            top: `${sta.ysign}vw`,
           }}
           id="div-sign-tem"
           onMouseEnter={() => setsignInIsShown(true)}
@@ -444,91 +458,87 @@ export default function Header() {
           <div className="row d-flex justify-content-center flex-row flex-wrap m-0">
             <div className="col-10 d-flex justify-content-center ">
               <button type="button" className="btn btn-warning w-50 mt-3 ">
-                <Link to="./sign">{t('Sign')}</Link>{" "}
+                <Link to="./sign">{t("Sign")}</Link>{" "}
               </button>
             </div>
 
             <div className="registerlink col-10 justify-content-center border-bottom py-2 d-flex">
               {" "}
-              {t('Newcustomer?')}
+              {t("Newcustomer?")}
               <a
                 href="./Registration/Registertion.html"
                 className="px-2 text-decoration-none"
               >
                 {" "}
-                {t('Starthere.')}
+                {t("Starthere.")}
               </a>{" "}
             </div>
           </div>
 
           <div className="row pt-2 pe-4 ps-4" style={{ display: "flex" }}>
-            <div
-              className="col-6 "
-              id="listofsign"
-              style={{ width: "50%" }}
-            >
-              <h5>{t('yourlists')}</h5>
+            <div className="col-6 " id="listofsign" style={{ width: "50%" }}>
+              <h5>{t("yourlists")}</h5>
 
               <div>
-                <a href="/">{t('CreateaList')} </a>
+                <a href="/">{t("CreateaList")} </a>
               </div>
 
               <div>
-                <a href="/">{t('FindaList')}</a>
+                <a href="/">{t("FindaList")}</a>
               </div>
             </div>
 
             <div className="col-6 " id="listofsign" style={{ width: "50%" }}>
-              <h5>{t('youraccount')}</h5>
+              <h5>{t("youraccount")}</h5>
 
               <div>
                 {" "}
-                <a href="/">{t('AccountOrders')} </a>{" "}
+                <a href="/">{t("AccountOrders")} </a>{" "}
               </div>
 
               <div>
                 {" "}
-                <a href="/">{t('Recommendations')} </a>{" "}
+                <a href="/">{t("Recommendations")} </a>{" "}
               </div>
 
               <div>
                 {" "}
-                <a href="/">{t('Browsing')} </a>{" "}
+                <a href="/">{t("Browsing")} </a>{" "}
               </div>
 
               <div>
                 {" "}
-                <a href="/">{t('Watchlist')}</a>{" "}
+                <a href="/">{t("Watchlist")}</a>{" "}
               </div>
 
               <div>
                 {" "}
-                <a href="/">{t('VideoPurchases')}  </a>{" "}
+                <a href="/">{t("VideoPurchases")} </a>{" "}
               </div>
 
               <div>
                 {" "}
-                <a href="/">{t('Kindle')} </a>{" "}
+                <a href="/">{t("Kindle")} </a>{" "}
               </div>
 
               <div>
                 {" "}
-                <a href="/">{t('ContentDevices')} </a>{" "}
+                <a href="/">{t("ContentDevices")} </a>{" "}
               </div>
 
               <div>
                 {" "}
-                <a href="/">{t('Subscribe')} </a>{" "}
+                <a href="/">{t("Subscribe")} </a>{" "}
               </div>
 
               <div>
                 {" "}
-                <a href="/">{t('Memberships')}  </a>{" "}
+                <a href="/">{t("Memberships")} </a>{" "}
               </div>
 
               <div>
                 {" "}
-                <a href="/">{t('MusicLibrary')}  </a>{" "}
+                <a href="/">{t("MusicLibrary")} </a>{" "}
               </div>
             </div>
           </div>
@@ -546,8 +556,9 @@ export default function Header() {
           dir={!sta.langdir}
           style={{
             display: searchIsShown ? "block" : "none",
-            position: "absolute", left: `${sta.xsearch}%`,
-            top: `${sta.ysearch}%`
+            position: "absolute",
+            left: `${sta.xsearch}%`,
+            top: `${sta.ysearch}%`,
           }}
           //  onClick={() => setSearchIsShown(true)}
 
