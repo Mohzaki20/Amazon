@@ -23,7 +23,7 @@ export default function Sign() {
   }
   return (
     <>
-      <div className="sign">
+      <div className="sign" dir="ltr">
         <img src={logo} id="amazon-icon" alt="" />
         <div className="card">
           <form id="SignForm" onSubmit={(e) => handleSign(e)}>

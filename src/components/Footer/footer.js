@@ -6,27 +6,16 @@ import { useContext, useEffect, useState } from "react";
 import { langContext } from "../../context/lang";
 const Footer = () => {
   const { t, i18n } = useTranslation();
-  var {lang}=   useContext(langContext)
-  const[textdir,settextdir] = useState('left')
-  useEffect(()=>{
-    // if(lang=='ar'){
-    //   settextdir('right')
-    //  }
-    //  else{
-    //   settextdir('left')
-    //  }
-  },[])
-  // const handlefooterlang=()=>{
- 
-  // }
+  var { lang } = useContext(langContext)
+  const [textdir, settextdir] = useState('left')
   return (
     <>
-      <button className="back">{t('Backtotop')}</button>
-      <footer id="footer1" 
-      //  dir={`${lang=='en'?'ltr':'rtl'}`}
-       >
-        <div className="f1section1" 
-         style={{textAlign:`${lang=='en'?'left':'right'}`,fontWeight:`${lang=='en'?'300':'bold'}`}}
+      <button className="back" onClick={() => window.scroll(0,0)}>{t('Backtotop')}</button>
+      <footer id="footer1"
+      
+      >
+        <div className="f1section1"
+          style={{ textAlign: `${lang == 'en' ? 'left' : 'right'}`, fontWeight: `${lang == 'en' ? '300' : 'bold'}` }}
         >
           <div className="col1">
             <h5>{t('Gettoknowus')}</h5>
@@ -67,22 +56,22 @@ const Footer = () => {
         </div>
         <div>
           <nav className="navfooter1">
-            <div id="secondlogo" style={{ fontSize: "1.4vw",fontWeight:`${lang=='en'?'300':'bolder'}` }}>
+            <div id="secondlogo" style={{ fontSize: "1.4vw", fontWeight: `${lang == 'en' ? '300' : 'bolder'}` }}>
               <a href="/" className="logo1">
                 {" "}
               </a>
-              <a href="/" style={{marginLeft:"10%"}}>
+              <a href="/" style={{ marginLeft: "10%" }}>
                 {" "}
                 <img src={logo} alt="logo" width="100px" />
               </a>
               <div>
-                <a href="/" style={{ alignItems: "center" ,fontSize: "1.1vw",fontWeight:`${lang=='en'?'300':'bold'}`}} >
+                <a href="/" style={{ alignItems: "center", fontSize: "1.1vw", fontWeight: `${lang == 'en' ? '300' : 'bold'}` }} >
                   <span style={{ paddingLeft: "5px" }}>{t('English1')}</span>{" "}
                 </a>
 
                 <a href="/" >
                   <img src={egypt} alt="" width="6%" />
-                  <div className="d-inline me-1 ms-1" style={{fontSize: "1.1vw",fontWeight:`${lang=='en'?'300':'bold'}`}}>
+                  <div className="d-inline me-1 ms-1" style={{ fontSize: "1.1vw", fontWeight: `${lang == 'en' ? '300' : 'bold'}` }}>
                     <span>{t('Egypt')}</span>
                   </div>
                 </a>
@@ -92,14 +81,14 @@ const Footer = () => {
         </div>
       </footer>
       <footer id="footer2">
-        <div className="f2section1" style={{textAlign:`${lang=='en'?'left':'right'}`,fontWeight:`${lang=='en'?'300':'bold'}`}}>
+        <div className="f2section1" style={{ textAlign: `${lang == 'en' ? 'left' : 'right'}`, fontWeight: `${lang == 'en' ? '300' : 'bold'}` }}>
           <table className="fTable">
             <tbody>
               <tr className="table-footer">
                 <td>
                   {" "}
                   <a href="/">
-                    <span>{t('AmazonMusic')} </span>{t('Streammillionsofsongs')} 
+                    <span>{t('AmazonMusic')} </span>{t('Streammillionsofsongs')}
                   </a>
                 </td>
                 <td>
@@ -109,12 +98,12 @@ const Footer = () => {
                 </td>
                 <td>
                   <a href="/">
-                    <span>{t('6pm')}</span>{t('Scoredealsonfashionbrands')} 
+                    <span>{t('6pm')}</span>{t('Scoredealsonfashionbrands')}
                   </a>
                 </td>
                 <td>
                   <a href="/">
-                    <span>{t('AbeBooks')}</span>{t('Books,art&collectibles')} 
+                    <span>{t('AbeBooks')}</span>{t('Books,art&collectibles')}
                   </a>
                 </td>
                 <td>
@@ -137,7 +126,7 @@ const Footer = () => {
                 <td>
                   {" "}
                   <a href="/">
-                    <span>{t('AmazonGlobal')}</span>{t('ShipOrdersInternationally')} 
+                    <span>{t('AmazonGlobal')}</span>{t('ShipOrdersInternationally')}
                   </a>
                 </td>
                 <td>
@@ -152,7 +141,7 @@ const Footer = () => {
                 </td>
                 <td>
                   <a href="/">
-                    <span>{t('AmazonWebServices')}</span>{t('ScalableCloudComputingServices')} 
+                    <span>{t('AmazonWebServices')}</span>{t('ScalableCloudComputingServices')}
                   </a>
                 </td>
                 <td>
@@ -174,7 +163,7 @@ const Footer = () => {
             </tbody>
           </table>
         </div>
-        <div id="endfooter" style={{textAlign:`${lang=='en'?'left':'right'}`,fontWeight:`${lang=='en'?'300':'bold'}`}}>
+        <div id="endfooter" style={{ textAlign: `${lang == 'en' ? 'left' : 'right'}`, fontWeight: `${lang == 'en' ? '300' : 'bold'}` }}>
           <div id="endfooterlinks">
             <a href="/">{t('ConditionsofUse')} </a>
             <a href="/">{t('PrivacyNotice')}</a>

@@ -63,28 +63,28 @@ export default function Navbar() {
               <Link to="/">{t("Home")}</Link>
             </li>
             <li>
-              <Link to="/laptops">{t("Laptops")}</Link>
+              <Link to="/laptops">{t("laptops")}</Link>
             </li>
             <li>
               <Link to="/womens-jewellery">{t("Jewelry")}</Link>
             </li>
             <li>
-              <Link to="/sunglasses">{t("Sunglasses")}</Link>
+              <Link to="/sunglasses">{t("sunglasses")}</Link>
             </li>
             <li>
-              <Link to="/mens-shoes">{t("Shoes")}</Link>
+              <Link to="/mens-shoes">{t("shoes")}</Link>
             </li>
             <li>
-              <Link to="/mens-shirts">{t("Shirts")}</Link>
+              <Link to="/mens-shirts">{t("shirts")}</Link>
             </li>
             <li>
-              <Link to="/womens-dresses">{t("Dresses")}</Link>
+              <Link to="/womens-dresses">{t("dresses")}</Link>
             </li>
             <li>
-              <Link to="/lighting">{t("Lighting")}</Link>
+              <Link to="/lighting">{t("lighting")}</Link>
             </li>
             <li>
-              <Link to="/smartphones">{t("Mobiles")}</Link>
+              <Link to="/smartphones">{t("mobiles")}</Link>
             </li>
           </ul>
           <img className="img" src={imgNav} alt="" />
