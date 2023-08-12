@@ -58,8 +58,7 @@
   color: rgb(65, 117, 145);
   text-decoration: none;
   display: block;
-  margin-left: 3%;
-  margin-top: 3%;
+  margin: 15px 2px;
 }
 
 .Categories-Link:hover {
