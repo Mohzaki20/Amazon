@@ -1,2 +1,6 @@
-Dashboard Repo: https://github.com/Mohzaki20/Dashboard_Angular 
-Mobile App: https://github.com/moataznayel/Amazon_Mobile_App
+#Project Title#
+Amazon Clone
+##Description##
+The Amazon Clone is a web application built using React JS, Redux, Bootstrap, and Firebase. It utilizes Firebase as the database to store and display products. The application includes features such as product filtering, authorization, authentication, localization, and the ability to search for products.
+###Links:###
+Demo: https://amazon-one-alpha.vercel.app/
