@@ -39,7 +39,7 @@ Here're some of the project's best features:
 git clone https://github.com/Mohzaki20/Amazon.git
 ```
 
-<p>2. Install node.js</p>
+<p>2. Install Packages</p>
 
 ```
 npm init
