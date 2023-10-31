@@ -42,7 +42,7 @@ git clone https://github.com/Mohzaki20/Amazon.git
 <p>2. Install Packages</p>
 
 ```
-npm init
+npm i
 ```
 
 <p>3. Run Project</p>
